@@ -1,0 +1,15 @@
+#!/bin/bash
+/sbin/iptables -F
+/sbin/iptables -X
+/sbin/iptables -t nat -F
+/sbin/iptables -t nat -X
+/sbin/iptables -t mangle -F
+/sbin/iptables -t mangle -X
+# Die Regeln erlauben es, die Verbindung wiederherzustellen, indem der
+ gesamten Datenverkehr geöffnet wird
+/sbin/iptables -P INPUT ACCEPT
+/sbin/iptables -P FORWARD ACCEPT
+/sbin/iptables -P OUTPUT ACCEPT
+# Druckt alle Regeln auf der Konsole aus, nachdem diese Datei ausgeführt
+ wurde
+/sbin/iptables -nL
